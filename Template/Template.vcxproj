@@ -131,6 +131,7 @@
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
+      <DelayLoadDLLs>bedrock_server.dll</DelayLoadDLLs>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -167,6 +168,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <Library Include="..\Lib\SymDBHelper.lib" />
     <Library Include="..\Lib\bedrock_server_api.lib" />
     <Library Include="..\Lib\bedrock_server_var.lib" />
     <Library Include="..\Lib\LiteLoader.lib" />

@@ -40,5 +40,8 @@
     <Library Include="..\Lib\LiteLoader.lib">
       <Filter>资源文件</Filter>
     </Library>
+    <Library Include="..\Lib\SymDBHelper.lib">
+      <Filter>资源文件</Filter>
+    </Library>
   </ItemGroup>
 </Project>
