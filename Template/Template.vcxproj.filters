@@ -30,18 +30,4 @@
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
-  <ItemGroup>
-    <Library Include="..\Lib\bedrock_server_api.lib">
-      <Filter>资源文件</Filter>
-    </Library>
-    <Library Include="..\Lib\bedrock_server_var.lib">
-      <Filter>资源文件</Filter>
-    </Library>
-    <Library Include="..\Lib\LiteLoader.lib">
-      <Filter>资源文件</Filter>
-    </Library>
-    <Library Include="..\Lib\SymDBHelper.lib">
-      <Filter>资源文件</Filter>
-    </Library>
-  </ItemGroup>
 </Project>
