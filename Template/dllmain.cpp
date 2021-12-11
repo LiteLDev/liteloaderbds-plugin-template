@@ -1,9 +1,9 @@
 ﻿// dllmain.cpp : 定义 DLL 应用程序的入口点。
 #include "pch.h"
-#pragma comment(lib, "Lib/bedrock_server_api.lib")
-#pragma comment(lib, "Lib/bedrock_server_var.lib")
-#pragma comment(lib, "Lib/SymDBHelper.lib")
-#pragma comment(lib, "Lib/LiteLoader.lib")
+#pragma comment(lib, "../SDK/Lib/bedrock_server_api.lib")
+#pragma comment(lib, "../SDK/Lib/bedrock_server_var.lib")
+#pragma comment(lib, "../SDK/Lib/SymDBHelper.lib")
+#pragma comment(lib, "../SDK/Lib/LiteLoader.lib")
 
 BOOL APIENTRY DllMain( HMODULE hModule,
                        DWORD  ul_reason_for_call,

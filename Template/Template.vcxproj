@@ -32,7 +32,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>$(ProjectDir)Header\third-party;$(ProjectDir)Header;$(VC_IncludePath);$(WindowsSDK_IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)SDK\Header\third-party;$(SolutionDir)SDK\Header;$(VC_IncludePath);$(WindowsSDK_IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -55,8 +55,8 @@
       <DelayLoadDLLs>bedrock_server.dll</DelayLoadDLLs>
     </Link>
     <PreBuildEvent>
-      <Command>if not exist $(ProjectDir)Lib\bedrock_server_api.lib goto process
-if not exist $(ProjectDir)Lib\bedrock_server_var.lib goto process
+      <Command>if not exist $(SolutionDir)SDK\Lib\bedrock_server_api.lib goto process
+if not exist $(SolutionDir)SDK\Lib\bedrock_server_var.lib goto process
 goto end
 
 :process
