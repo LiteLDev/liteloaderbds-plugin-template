@@ -61,7 +61,7 @@ goto end
 
 :process
 cd /d $(ProjectDir)Tools
-LibraryBuilder.exe -o ..\Lib
+LibraryBuilder.exe -o ..\..\SDK\Lib
 
 :end
 </Command>
