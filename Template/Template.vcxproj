@@ -61,11 +61,15 @@ if not exist $(SolutionDir)SDK\Lib\bedrock_server_var.lib goto process
 goto end
 
 :process
-cd /d $(ProjectDir)Tools
-LibraryBuilder.exe -o ..\..\SDK\Lib
+cd /d $(SolutionDir)\SDK\Tools\
+if exist $(LocalDebuggerWorkingDirectory)\bedrock_server.pdb (
+LibraryBuilder.exe -o ..\Lib\ $(LocalDebuggerWorkingDirectory)
+) else (
+LibraryBuilder.exe -o ..\Lib\
+)
 
 :end
-</Command>
+			</Command>
     </PreBuildEvent>
     <PostBuildEvent>
       <Command>if exist $(LocalDebuggerWorkingDirectory)\plugins\ (
