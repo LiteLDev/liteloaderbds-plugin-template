@@ -16,51 +16,68 @@ class CompoundTag : public Tag {
 // Add Member There
 public:
 
-//MCAPI CompoundTag(CompoundTag&&);
-map<std::string, CompoundTagVariant> val;
+    //MCAPI CompoundTag(CompoundTag&&);
+    map<std::string, CompoundTagVariant> val;
 
-inline static CompoundTag* create() {
-    return (CompoundTag*)Tag::createTag((Tag::Type)10);
-}
+    inline static CompoundTag* create() {
+        return (CompoundTag*)Tag::createTag((Tag::Type)10);
+    }
 
-inline map<std::string, CompoundTagVariant>& value() {
-    return dAccess<map<std::string, CompoundTagVariant>, 8>(this);
-}
+    inline map<std::string, CompoundTagVariant>& value() {
+        return dAccess<map<std::string, CompoundTagVariant>, 8>(this);
+    }
 
-template <typename T>
-inline T const* get(class gsl::basic_string_span<char const, -1> key) const {
-    return (T*)get(key);
-};
+    template <typename T>
+    inline T const* get(class gsl::basic_string_span<char const, -1> key) const {
+        return (T*)get(key);
+    };
 
-// put value
-LIAPI void putEnd(std::string key);
-LIAPI struct TagMemoryChunk& putIntArray(std::string key, struct TagMemoryChunk val);
-LIAPI double& putDouble(std::string key, double val);
-LIAPI void putByteArray(std::string key, void* data, size_t size);
+    // put value
+    LIAPI void putEnd(std::string key);
+    LIAPI struct TagMemoryChunk& putIntArray(std::string key, struct TagMemoryChunk val);
+    LIAPI double& putDouble(std::string key, double val);
+    LIAPI void putByteArray(std::string key, void* data, size_t size);
 
-// get value
-LIAPI double getDouble(class gsl::basic_string_span<char const, -1> key) const;
-LIAPI struct TagMemoryChunk const& getIntArray(class gsl::basic_string_span<char const, -1> key) const;
+    // get value
+    LIAPI double getDouble(class gsl::basic_string_span<char const, -1> key) const;
+    LIAPI struct TagMemoryChunk const& getIntArray(class gsl::basic_string_span<char const, -1> key) const;
 
-// get tag
-LIAPI class ByteTag const* getByteTag(class gsl::basic_string_span<char const, -1> key) const;
-LIAPI class ShortTag const* getShortTag(class gsl::basic_string_span<char const, -1> key) const;
-LIAPI class FloatTag const* getFloatTag(class gsl::basic_string_span<char const, -1> key) const;
-LIAPI class DoubleTag const* getDoubleTag(class gsl::basic_string_span<char const, -1> key) const;
-LIAPI class ByteArrayTag const* getByteArrayTag(class gsl::basic_string_span<char const, -1> key) const;
-LIAPI class StringTag const* getStringTag(class gsl::basic_string_span<char const, -1> key) const;
-LIAPI class IntArrayTag const* getIntArrayTag(class gsl::basic_string_span<char const, -1> key) const;
-inline Tag* operator[](class gsl::basic_string_span<char const, -1> key) {
-    return get(key);
-}
+    // get tag
+    LIAPI class ByteTag const* getByteTag(class gsl::basic_string_span<char const, -1> key) const;
+    LIAPI class ShortTag const* getShortTag(class gsl::basic_string_span<char const, -1> key) const;
+    LIAPI class FloatTag const* getFloatTag(class gsl::basic_string_span<char const, -1> key) const;
+    LIAPI class DoubleTag const* getDoubleTag(class gsl::basic_string_span<char const, -1> key) const;
+    LIAPI class ByteArrayTag const* getByteArrayTag(class gsl::basic_string_span<char const, -1> key) const;
+    LIAPI class StringTag const* getStringTag(class gsl::basic_string_span<char const, -1> key) const;
+    LIAPI class IntArrayTag const* getIntArrayTag(class gsl::basic_string_span<char const, -1> key) const;
+    inline Tag* operator[](class gsl::basic_string_span<char const, -1> key) {
+        return get(key);
+    }
 
-inline class ListTag const* getListTag(class gsl::basic_string_span<char const, -1> key) const {
-    return getList(key);
-};
-inline class CompoundTag const* getCompoundTag(class gsl::basic_string_span<char const, -1> key) const {
-    return getCompound(key );
-};
+    inline class ListTag const* getListTag(class gsl::basic_string_span<char const, -1> key) const {
+        return getList(key);
+    };
+    inline class CompoundTag const* getCompoundTag(class gsl::basic_string_span<char const, -1> key) const {
+        return getCompound(key );
+    };
 
+    // io
+    LIAPI void setItemStack(ItemStack* item);
+    LIAPI void setBlock(Block* blk);
+    LIAPI bool setActor(Actor* actor);
+    LIAPI bool setPlayer(Player* player);
+    LIAPI bool setBlockActor(BlockActor* ble);
+    LIAPI static CompoundTag* fromItemStack(ItemStack* item);
+    LIAPI static CompoundTag* fromBlock(Block* blk);
+    LIAPI static CompoundTag* fromActor(Actor* actor);
+    LIAPI static CompoundTag* fromPlayer(Player* player);
+    LIAPI static CompoundTag* fromBlockActor(BlockActor* ble);
+
+    LIAPI std::string toSNBT();
+    LIAPI std::string toBinaryNBT(bool isLittleEndian = true);
+    LIAPI static CompoundTag* fromSNBT(const std::string& snbt);
+    LIAPI static CompoundTag* fromBinaryNBT(void* data, size_t len, bool isLittleEndian = true);
+    LIAPI static CompoundTag* fromBinaryNBT(void* data, size_t len, size_t& endOffset, bool isLittleEndian = true);
 
 #undef AFTER_EXTRA
 
@@ -111,8 +128,8 @@ public:
     MCAPI class Int64Tag const* getInt64Tag(class gsl::basic_string_span<char const, -1>) const;
     MCAPI class Int64Tag* getInt64Tag(class gsl::basic_string_span<char const, -1>);
     MCAPI class IntTag const* getIntTag(class gsl::basic_string_span<char const, -1>) const;
-    MCAPI class ListTag* getList(class gsl::basic_string_span<char const, -1>);
     MCAPI class ListTag const* getList(class gsl::basic_string_span<char const, -1>) const;
+    MCAPI class ListTag* getList(class gsl::basic_string_span<char const, -1>);
     MCAPI short getShort(class gsl::basic_string_span<char const, -1>) const;
     MCAPI std::string const& getString(class gsl::basic_string_span<char const, -1>) const;
     MCAPI bool isEmpty() const;
