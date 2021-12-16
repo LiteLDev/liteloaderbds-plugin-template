@@ -1,18 +1,18 @@
-#include "MC/Packet.hpp"
 #include "MC/BinaryStream.hpp"
+#include "MC/Packet.hpp"
 
 template <int pid, bool batching = true, bool compress = true>
-class MyPkt : public Packet {
+class NetworkPacket : public Packet {
 public:
     string_view view;
-    MyPkt() {
+    NetworkPacket() {
         incompressible = compress;
     }
-    MyPkt(string_view sv)
+    NetworkPacket(string_view sv)
         : view(sv) {
         incompressible = compress;
     }
-    inline virtual ~MyPkt() {
+    inline virtual ~NetworkPacket() {
     }
 
     virtual int getId() const {
@@ -27,7 +27,7 @@ public:
     virtual int /*enum StreamReadResult*/ _read(class ReadOnlyBinaryStream&) {
         throw("TODO in MyPkt::_read()");
         return 0;
-    } 
+    }
     virtual void dummyread() {
         throw("TODO in MyPkt::dummyread()");
     }

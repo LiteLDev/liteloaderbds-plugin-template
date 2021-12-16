@@ -15,10 +15,21 @@ class ServerNetworkHandler {
 #define AFTER_EXTRA
 // Add Member There
 public:
-inline class ServerPlayer* getServerPlayer(class NetworkIdentifier const& a0) {
-    return _getServerPlayer(a0, 0);
+inline class ServerPlayer* getServerPlayer(class NetworkIdentifier const& a0, char a1=0) {
+        return _getServerPlayer(a0, a1);
+    }
+
+inline void handle(class NetworkIdentifier const& a0, class CommandRequestPacket const& a1) {
+    void (ServerNetworkHandler::*rv)(class NetworkIdentifier const&, class CommandRequestPacket const&);
+    *((void**)&rv) = dlsym("?handle@ServerNetworkHandler@@UEAAXAEBVNetworkIdentifier@@AEBVCommandRequestPacket@@@Z");
+    return (this->*rv)(std::forward<class NetworkIdentifier const&>(a0), std::forward<class CommandRequestPacket const&>(a1));
 }
 
+inline void handle(class NetworkIdentifier const& a0, class TextPacket const& a1) {
+    void (ServerNetworkHandler::*rv)(class NetworkIdentifier const&, class TextPacket const&);
+    *((void**)&rv) = dlsym("?handle@ServerNetworkHandler@@UEAAXAEBVNetworkIdentifier@@AEBVTextPacket@@@Z");
+    return (this->*rv)(std::forward<class NetworkIdentifier const&>(a0), std::forward<class TextPacket const&>(a1));
+}
 #undef AFTER_EXTRA
 
 #ifndef DISABLE_CONSTRUCTOR_PREVENTION_SERVERNETWORKHANDLER
