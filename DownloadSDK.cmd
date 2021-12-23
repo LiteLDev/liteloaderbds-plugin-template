@@ -6,6 +6,7 @@ set LL_SDK_USE_BRANCH=main
 set LL_SDK_DIRECTORY_PATH=SDK
 
 
+
 rem Process System Proxy
 for /f "tokens=3* delims= " %%i in ('Reg query "HKCU\Software\Microsoft\Windows\CurrentVersion\Internet Settings" /v ProxyEnable') do (
     if %%i==0x1 (
@@ -20,11 +21,16 @@ for /f "tokens=3* delims= " %%i in ('Reg query "HKCU\Software\Microsoft\Windows\
 
 echo [INFO] Upgrading LL-SDK from GitHub ...
 echo.
+git stash save "Uploading LL SDK..."
+echo.
+
 if not exist %LL_SDK_DIRECTORY_PATH% (
     git subtree add --prefix=%LL_SDK_DIRECTORY_PATH% %LL_SDK_REMOTE_PATH% %LL_SDK_USE_BRANCH% --squash
 ) else (
     git subtree pull --prefix=%LL_SDK_DIRECTORY_PATH% %LL_SDK_REMOTE_PATH% %LL_SDK_USE_BRANCH% --squash
 )
+
+git stash pop -q
 echo.
 echo [INFO] Upgrading LL-SDK from GitHub finished.
 echo.
