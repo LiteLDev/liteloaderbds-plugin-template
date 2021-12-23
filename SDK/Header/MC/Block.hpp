@@ -19,7 +19,7 @@ public:
     LIAPI string getTypeName() const;
 	LIAPI int getId() const;
 	LIAPI unsigned short getTileData();
-    LIAPI CompoundTag* getNbt();
+    LIAPI std::unique_ptr<CompoundTag> getNbt();
     LIAPI bool setNbt(CompoundTag* nbt);
 #undef AFTER_EXTRA
 

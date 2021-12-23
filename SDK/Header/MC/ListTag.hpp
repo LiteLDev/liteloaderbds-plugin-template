@@ -18,26 +18,12 @@ std::vector<Tag*> val;
 Tag::Type elementType;
 
 public:
-    inline static ListTag* create() {
-        return (ListTag*)Tag::createTag(Tag::Type::List);
-    }
-
-    inline std::vector<Tag*>& value() {
-        return dAccess<std::vector<Tag*>, 8>(this);
-    }
-
-    inline Tag* operator[](int index) {
-        if (index < size())
-            return get(index);
-        return nullptr;
-    }
-
-    inline Tag::Type getElementType()
-    {
-        return elementType;
-    }
-
-    inline size_t getSize() { return val.size(); }
+    LIAPI static std::unique_ptr<ListTag> create();
+    LIAPI std::vector<Tag*>& value();
+    LIAPI Tag const* operator[](int index) const;
+    LIAPI Tag::Type getElementType() const;
+    LIAPI size_t getSize() const;
+    LIAPI vector<Tag*> get();
 
     // get value
     LIAPI unsigned char getByte(int) const;
@@ -46,7 +32,6 @@ public:
     LIAPI TagMemoryChunk getByteArray(int) const;
 
 
-    LIAPI void add(Tag* t);
     LIAPI void addEnd();
     LIAPI void addByte(unsigned char v);
     LIAPI void addShort(short v);
@@ -59,11 +44,9 @@ public:
     LIAPI void addByteArray(char data[], size_t size);
     LIAPI void addIntArray(TagMemoryChunk);
     LIAPI void addIntArray(int data[], size_t size);
-
-    inline vector<Tag*> get()
-    {
-        return value();
-    }
+    
+    LIAPI std::vector<Tag*>::const_iterator begin() const;
+    LIAPI std::vector<Tag*>::const_iterator end() const;
 
 #undef AFTER_EXTRA
 
