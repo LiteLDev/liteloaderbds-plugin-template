@@ -53,12 +53,7 @@ public:
         Compound,
         IntArray,
     };
-    //MCAPI static std::string getTagName(enum Tag::Type);
-    //MCAPI static std::unique_ptr<class Tag> newTag(enum Tag::Type);
-    //MCAPI static std::unique_ptr<class Tag> readNamedTag(class IDataInput&, std::string&);
-    //MCAPI static void writeNamedTag(std::string const&, class Tag const&, class IDataOutput&);
 
-    LIAPI static Tag* createTag(Tag::Type t);
     LIAPI Type getTagType() const;
 
     //value
@@ -91,6 +86,17 @@ public:
 //static
 
     LIAPI std::string toJson(int formatIndent);
+
+    template <typename T>
+    inline static std::unique_ptr<Tag> asTag(std::unique_ptr<T>&& tag)
+    {
+        return std::unique_ptr<Tag>(dynamic_cast<Tag*>(tag.release()));
+    }
+    template <typename T>
+    inline static std::unique_ptr<T> asTypedTag(std::unique_ptr<Tag> tag)
+    {
+        return std::unique_ptr<T>(dynamic_cast<T*>(tag.release()));
+    }
 
 #undef AFTER_EXTRA
 

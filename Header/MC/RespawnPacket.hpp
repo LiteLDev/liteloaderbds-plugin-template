@@ -21,7 +21,7 @@ public:
     Vec3 respawnPosition;
     PlayerRespawnState respawnState;
     ActorRuntimeID runtimeId;
-    static std::string getStateString(PlayerRespawnState state) {
+    inline static std::string getStateString(PlayerRespawnState state) {
 #define CASE_ENUM(var) case PlayerRespawnState::var:\
 return #var;
         switch (state)
@@ -35,9 +35,9 @@ return #var;
         return fmt::format("Unknown({})",(int)state);
 #undef CASE_ENUM
     }
-    std::string toDebugString() {
-        return fmt::format("{}({}): position: ({}), state: {}, runtimeId: {}",
-            getName(), (int)getId(),
+    inline std::string toDebugString() {
+        return fmt::format("{}: position: ({}), state: {}, runtimeId: {}",
+            __super::toDebugString(),
             respawnPosition.toString(), getStateString(respawnState), runtimeId.id);
     }
 #undef AFTER_EXTRA

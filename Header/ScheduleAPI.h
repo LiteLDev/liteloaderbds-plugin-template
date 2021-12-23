@@ -6,6 +6,10 @@
 // Schedule future callback plans
 //
 // [Usage]
+// 
+//   Schedule::nextTick([](){
+//      Logger::Error("hello");
+//   }, 20);                        // Delay this callback to next game tick (20 ticks = 1 second)
 //
 //   Schedule::delay([](){
 //      Logger::Error("hello");
@@ -27,24 +31,15 @@
 
 class ScheduleTask
 {
-    friend class ScheduleTaskQueueType;
-
     unsigned int taskId;
-    int leftTime, interval, count;
-    std::function<void(void)> task;
 
 public:
     LIAPI bool cancel();
-    LIAPI ScheduleTask(unsigned long long delay, unsigned long long interval, int count);
+    LIAPI ScheduleTask(unsigned int taskId);
 
     inline unsigned int getTaskId()
     {
         return taskId;
-    }
-
-    inline bool operator<(const ScheduleTask& t) const
-    {
-        return leftTime < t.leftTime;
     }
 };
 
