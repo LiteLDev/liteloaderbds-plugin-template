@@ -33,3 +33,8 @@ add_link_options(
 )
 
 add_library(TemplatePlugin SHARED ${SRC_FILES_DIR})
+
+add_custom_command(TARGET TemplatePlugin PRE_BUILD
+        COMMAND cmd /c ${PROJECT_SOURCE_DIR}/prepareLib.cmd ${PROJECT_SOURCE_DIR}
+        COMMENT "Preparing Library"
+        )
