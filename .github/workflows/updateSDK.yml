@@ -23,4 +23,4 @@ jobs:
         git config --global user.name "github-actions[bot]"
         git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
         git commit -am "fetch upstream SDK"
-        git push || return 0
+        git push || exit 0
