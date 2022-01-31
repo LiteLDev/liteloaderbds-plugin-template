@@ -1,4 +1,4 @@
-name: Fetch Upstream SDK
+name: Update SDK
 
 on:
   schedule:
