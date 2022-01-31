@@ -2,7 +2,7 @@ name: Fetch Upstream SDK
 
 on:
   schedule:
-  - cron: "0 * * * *"
+  - cron: "0 0 * * *"
   workflow_dispatch:
 
 jobs:
@@ -22,4 +22,4 @@ jobs:
         git config --global user.name "github-actions[bot]"
         git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
         git commit -am "fetch upstream SDK"
-        git push
+        git push || return 0
