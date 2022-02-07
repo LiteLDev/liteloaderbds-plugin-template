@@ -13,6 +13,9 @@ BOOL APIENTRY DllMain( HMODULE hModule,
     switch (ul_reason_for_call)
     {
     case DLL_PROCESS_ATTACH:
+        static_assert(false, "Please modify your plugin registration details and delete this line");
+        LL::registerPlugin("PluginName", "Introduction", LL::Version(1, 0, 0));
+        break;
     case DLL_THREAD_ATTACH:
     case DLL_THREAD_DETACH:
     case DLL_PROCESS_DETACH:
@@ -21,9 +24,10 @@ BOOL APIENTRY DllMain( HMODULE hModule,
     return TRUE;
 }
 
-extern void PluginInit();
+void PluginInit();
 
 extern "C" {
+    // Do something after all the plugins loaded
     _declspec(dllexport) void onPostInit() {
         std::ios::sync_with_stdio(false);
         PluginInit();
