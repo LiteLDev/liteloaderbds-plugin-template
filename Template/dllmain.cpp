@@ -14,7 +14,12 @@ BOOL APIENTRY DllMain( HMODULE hModule,
     {
     case DLL_PROCESS_ATTACH:
         static_assert(false, "Please modify your plugin registration details and delete this line");
-        LL::registerPlugin("PluginName", "Introduction", LL::Version(1, 0, 0));
+        LL::registerPlugin("PluginName", "Introduction", LL::Version(1, 0, 0), {
+                { "Note", "This is a note, you can remove it" },
+                { "Author", "???" },
+                { "Key", "Value" }
+            }
+        );
         break;
     case DLL_THREAD_ATTACH:
     case DLL_THREAD_DETACH:
