@@ -1,6 +1,6 @@
 name: Build Plugin
 
-on: [ workflow_dispatch ]
+on: [ push ]
 
 env:
   PLUGIN_NAME: Template
