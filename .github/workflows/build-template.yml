@@ -1,6 +1,6 @@
-name: Build Plugin
+name: Build Plugin(Publish if tag)
 
-on: [ push ]
+on: [ workflow_dispatch ]
 
 env:
   PLUGIN_NAME: Template
@@ -11,15 +11,21 @@ env:
   SDK_DIR: ./SDK
   BDS_VERSION: 1.18.31.04
 
-
 jobs:
   build:
-    runs-on: windows-2022
+    runs-on: windows-latest
 
     steps:
       - uses: actions/checkout@v2
         with:
           submodules: 'true'
+
+      # - name: Get information from Version.h file (TODO)
+      #   working-directory: ${{env.GITHUB_WORKSPACE}}
+      #   id: ver
+      #   run: |
+      #     pwd
+      #   shell: bash
 
       - name: Download Server
         working-directory: ${{env.GITHUB_WORKSPACE}}
