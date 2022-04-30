@@ -102,15 +102,7 @@ jobs:
         with:
           name: PDB-actions-${{ github.run_number }}
           path: ${{ github.workspace }}\output\PDB
-
-      - name: Prepare for creating Release
-        working-directory: ${{env.GITHUB_WORKSPACE}}
-        id: rel
-        if: startsWith(github.ref, 'refs/tags/')
-        run: |
-          echo ::set-output name=tag::${GITHUB_REF#refs/*/}
-          mv ${{env.PLUGIN_NAME}}.zip ${{env.PLUGIN_NAME}}-${GITHUB_REF#refs/*/}.zip
-        shell: bash
+          
 
       - name: Create New Release
         uses: softprops/action-gh-release@v1
@@ -119,7 +111,7 @@ jobs:
           # body_path: ${{ github.workspace }}\CHANGELOG.txt
           files: |
             ${{ github.workspace }}\${{env.PLUGIN_NAME}}-${{ steps.rel.outputs.tag }}.zip
-            ${{ github.workspace }}\output\PDB.zip
+            ${{ github.workspace }}\output\PDB-${{ steps.rel.outputs.tag }}.zip
         env:
           GITHUB_REPOSITORY: ${{env.GITHUB_ACTION_REPOSITORY}}
           
