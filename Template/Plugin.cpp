@@ -8,10 +8,10 @@
 #include <MC/Actor.hpp>
 #include <MC/Player.hpp>
 #include <MC/ItemStack.hpp>
+#include "Version.h"
 #include <LLAPI.h>
 
-static_assert(false, "Please set your plugin's name below and delete this line");
-Logger logger("PluginName");
+Logger logger(PLUGIN_NAME);
 
 void PluginInit()
 {

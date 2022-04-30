@@ -1,6 +1,7 @@
 ﻿// dllmain.cpp : 定义 DLL 应用程序的入口点。
 #include "pch.h"
 #include <LLAPI.h>
+#include "Version.h"
 #pragma comment(lib, "../SDK/Lib/bedrock_server_api.lib")
 #pragma comment(lib, "../SDK/Lib/bedrock_server_var.lib")
 #pragma comment(lib, "../SDK/Lib/SymDBHelper.lib")
@@ -14,11 +15,15 @@ BOOL APIENTRY DllMain( HMODULE hModule,
     switch (ul_reason_for_call)
     {
     case DLL_PROCESS_ATTACH:
-        static_assert(false, "Please modify your plugin registration details and delete this line");
-        LL::registerPlugin("PluginName", "Introduction", LL::Version(1, 0, 0), {
-                { "Note", "This is a note, you can remove it" },
-                { "Author", "???" },
-                { "Key", "Value" }
+        LL::registerPlugin(
+            PLUGIN_NAME,
+            PLUGIN_INTRODUCTION,
+            LL::Version(PLUGIN_VERSION_MAJOR, PLUGIN_VERSION_MINOR, PLUGIN_VERSION_REVISION, PLUGIN_LLVERSION_STATUS),
+            std::map<std::string, std::string> {
+#ifdef PLUGIN_AUTOHR
+                { "Author", PLUGIN_AUTOHR },
+#endif // PLUGIN_AUTOHR
+                    //{ "Key", "Value" }
             }
         );
         break;
