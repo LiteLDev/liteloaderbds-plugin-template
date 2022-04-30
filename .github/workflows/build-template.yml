@@ -22,6 +22,8 @@ jobs:
       - name: Download Server
         working-directory: ${{env.GITHUB_WORKSPACE}}
         run: |
+          mkdir ${{ env.SDK_DIR }}
+          mkdir ${{ env.SDK_DIR }}/Tools/
           mkdir ${{ env.SDK_DIR }}/Tools/Server
           # ServerLink=$(cat 'Scripts/LINK.txt')
           ServerLink=https://minecraft.azureedge.net/bin-win/bedrock-server-${{ env.BDS_VERSION }}.zip
