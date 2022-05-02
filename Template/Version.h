@@ -8,7 +8,7 @@
 static_assert(false, "Please modify your plugin registration details and delete this line");
 #define PLUGIN_NAME                 "PluginName"
 #define PLUGIN_INTRODUCTION         "Introduction"
-#define PLUGIN_AUTOHR               "AuthorName"
+#define PLUGIN_AUTHOR               "AuthorName"
 #define PLUGIN_VERSION_MAJOR        1
 #define PLUGIN_VERSION_MINOR        0
 #define PLUGIN_VERSION_REVISION     0
@@ -38,7 +38,7 @@ static_assert(false, "Please modify your plugin registration details and delete 
 #endif
 
 #define FILE_VERSION_BLOCK_HEADER           0x04004B0L
-#define FILE_VERSION_COMPANY_NAME           PLUGIN_AUTOHR
+#define FILE_VERSION_COMPANY_NAME           PLUGIN_AUTHOR
 #define FILE_VERSION_LEGAL_COPYRIGHT        "Copyright (C) 2022"
 #define FILE_VERSION_FILE_DESCRIPTION       PLUGIN_INTRODUCTION
 #define FILE_VERSION_FILE_VERSION_STRING    PLUGIN_FILE_VERSION_STRING
