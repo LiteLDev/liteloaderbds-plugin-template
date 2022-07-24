@@ -13,7 +13,7 @@ for /f "tokens=3* delims= " %%i in ('Reg query "HKCU\Software\Microsoft\Windows\
     )
 ) 
 
-git submodule update --init --recursive
+git submodule update --init --recursive --depth=1
 
 echo.
 echo [INFO] Upgrading LiteLoaderSDK from GitHub finished.
