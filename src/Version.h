@@ -1,0 +1,78 @@
+/**
+ * @file Version.h
+ * @note DO NOT remove this file unless you know what you are doing!
+ *       DO NOT modify code outside the designated area!
+ */
+
+#pragma once
+
+#define PLUGIN_VERSION_DEV 0
+#define PLUGIN_VERSION_BETA 1
+#define PLUGIN_VERSION_RELEASE 2
+
+// ***************************************************************************************
+
+// Please fill up the content here before developing your plugin!
+
+static_assert(false, "Please modify your plugin information below and delete this line!");
+
+#define PLUGIN_NAME "Plugin Name"
+
+#define PLUGIN_INTRODUCTION "Plugin Introduction"
+
+#define PLUGIN_AUTHOR "Plugin Author Name"
+
+// The version of your plugin. If you do not know how to set it, please refer
+// to https://semver.org/ .
+#define PLUGIN_VERSION_MAJOR 1
+#define PLUGIN_VERSION_MINOR 0
+#define PLUGIN_VERSION_REVISION 0
+#define PLUGIN_VERSION_BUILD 0
+
+// The stage of your plugin, which can be PLUGIN_VERSION_DEV, PLUGIN_VERSION_BETA
+// and PLUGIN_VERSION_RELEASE
+#define PLUGIN_VERSION_STATUS PLUGIN_VERSION_DEV
+
+// The target protocol version of your plugin. If you do not know how to set it,
+// please start the latest version of LiteLoaderBDS and get the protocol version.
+// If you are confident about the version compatibility of your plugin, you can
+// just comment this line (NOT RECOMMENDED).
+#define TARGET_BDS_PROTOCOL_VERSION 544
+
+// ***************************************************************************************
+
+// File version information, which is used in Resource.rc
+#define __TO_VERSION_STRING(ver) #ver
+#define TO_VERSION_STRING(ver) __TO_VERSION_STRING(ver)
+
+#if PLUGIN_VERSION_STATUS == PLUGIN_VERSION_BETA
+
+#define PLUGIN_FILE_VERSION_FLAG VS_FF_DEBUG
+#define PLUGIN_LLVERSION_STATUS LL::Version::Beta
+#define PLUGIN_FILE_VERSION_STRING TO_VERSION_STRING(PLUGIN_VERSION_MAJOR.PLUGIN_VERSION_MINOR.PLUGIN_VERSION_REVISION.PLUGIN_VERSION_ACTIONS BETA)
+
+#elif PLUGIN_VERSION_STATUS == PLUGIN_VERSION_DEV
+
+#define PLUGIN_FILE_VERSION_FLAG VS_FF_DEBUG
+#define PLUGIN_LLVERSION_STATUS LL::Version::Dev
+#define PLUGIN_FILE_VERSION_STRING TO_VERSION_STRING(PLUGIN_VERSION_MAJOR.PLUGIN_VERSION_MINOR.PLUGIN_VERSION_REVISION.PLUGIN_VERSION_ACTIONS DEV)
+
+#else
+
+#define PLUGIN_FILE_VERSION_FLAG 0x0L
+#define PLUGIN_LLVERSION_STATUS LL::Version::Release
+#define PLUGIN_FILE_VERSION_STRING TO_VERSION_STRING(PLUGIN_VERSION_MAJOR.PLUGIN_VERSION_MINOR.PLUGIN_VERSION_REVISION.PLUGIN_VERSION_ACTIONS)
+
+#endif
+
+#define FILE_VERSION_BLOCK_HEADER 0x04004B0L
+#define FILE_VERSION_COMPANY_NAME PLUGIN_AUTHOR
+#define FILE_VERSION_LEGAL_COPYRIGHT "Copyright (C) 2022"
+#define FILE_VERSION_FILE_DESCRIPTION PLUGIN_INTRODUCTION
+#define FILE_VERSION_FILE_VERSION_STRING PLUGIN_FILE_VERSION_STRING
+#define FILE_VERSION_INTERNAL_NAME PLUGIN_NAME
+#define FILE_VERSION_ORIGINAL_FILENAME PLUGIN_NAME ".dll"
+#define FILE_VERSION_PRODUCT_NAME FILE_VERSION_INTERNAL_NAME
+#define FILE_VERSION_PRODUCT_VERSION_STRING PLUGIN_FILE_VERSION_STRING
+#define FILE_VERSION_FILE_VERSION PLUGIN_VERSION_MAJOR, PLUGIN_VERSION_MINOR, PLUGIN_VERSION_REVISION, PLUGIN_VERSION_BUILD
+#define FILE_VERSION_PRODUCT_VERSION FILE_VERSION_FILE_VERSION
