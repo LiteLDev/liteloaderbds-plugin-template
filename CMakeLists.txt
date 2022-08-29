@@ -35,7 +35,7 @@ add_definitions(
 )
 
 add_compile_options(
-    /diagnostics:caret
+    /diagnostics:column
     /EHsc
     /FC
     /GL
