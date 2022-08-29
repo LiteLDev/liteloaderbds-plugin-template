@@ -1,43 +1,37 @@
-name: Build Plugin(Publish if tag)
+name: Build
 
-on: [ workflow_dispatch ]
+on:
+  workflow_dispatch:
 
 env:
-  PLUGIN_NAME: Template
-  SOLUTION_FILE_PATH: ./Template.sln
-  VERSION_FILE_PATH: Template/Version.h
+  PLUGIN_NAME: Plugin
+  SOLUTION_FILE_PATH: ./Plugin.sln
+  VERSION_FILE_PATH: src/Version.h
   BUILD_CONFIGURATION: Release
   Platform: X64
   SDK_DIR: ./SDK
-  BDS_VERSION: 1.18.31.04
+  BDS_VERSION: 1.19.20.02
 
 jobs:
   build:
     runs-on: windows-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v3
         with:
-          submodules: 'true'
+          submodules: true
 
-      # - name: Get information from Version.h file (TODO)
-      #   working-directory: ${{env.GITHUB_WORKSPACE}}
-      #   id: ver
-      #   run: |
-      #     pwd
-      #   shell: bash
-
-      - name: Download Server
+      - name: Download BDS
         working-directory: ${{env.GITHUB_WORKSPACE}}
         run: |
           mkdir -p ${{ env.SDK_DIR }}/Tools/Server
-          # ServerLink=$(cat 'Scripts/LINK.txt')
-          ServerLink=https://minecraft.azureedge.net/bin-win/bedrock-server-${{ env.BDS_VERSION }}.zip
+          ServerLink = https://minecraft.azureedge.net/bin-win/bedrock-server-${{ env.BDS_VERSION }}.zip
           curl -L -o ${{ env.SDK_DIR }}/Tools/Server/server.zip "$ServerLink"
           unzip ${{ env.SDK_DIR }}/Tools/Server/server.zip -d ${{ env.SDK_DIR }}/Tools/Server/ > /dev/null
         shell: bash
 
-      - name: Build Library
+      - name: Build libraries
         working-directory: ${{env.GITHUB_WORKSPACE}}
         run: |
           cd ${{ env.SDK_DIR }}\Tools
@@ -116,7 +110,6 @@ jobs:
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
         with:
-          # body_path: ${{ github.workspace }}\CHANGELOG.txt
           files: |
             ${{ github.workspace }}\${{env.PLUGIN_NAME}}-${{ steps.rel.outputs.tag }}.zip
             ${{ github.workspace }}\PDB-${{ steps.rel.outputs.tag }}.zip
