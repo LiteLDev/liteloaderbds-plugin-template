@@ -12,15 +12,15 @@
 
 // ***************************************************************************************
 
-// Please fill up the content here before developing your plugin!
+// Please FILL UP the content here before developing your plugin, and DO NOT modify any code
+// outside this area.
 
 static_assert(false, "Please modify your plugin information below and delete this line!");
 
-#define PLUGIN_NAME "Plugin Name"
-
-#define PLUGIN_INTRODUCTION "Plugin Introduction"
-
-#define PLUGIN_AUTHOR "Plugin Author Name"
+// The basic descriptions of your plugin
+#define PLUGIN_NAME "My Plugin"
+#define PLUGIN_INTRODUCTION "My Plugin is a plugin printing \"Hello, World!\" in the console."
+#define PLUGIN_AUTHOR "Me"
 
 // The version of your plugin. If you do not know how to set it, please refer
 // to https://semver.org/ .
@@ -37,7 +37,7 @@ static_assert(false, "Please modify your plugin information below and delete thi
 // please start the latest version of LiteLoaderBDS and get the protocol version.
 // If you are confident about the version compatibility of your plugin, you can
 // just comment this line (NOT RECOMMENDED).
-#define TARGET_BDS_PROTOCOL_VERSION 544
+#define TARGET_BDS_PROTOCOL_VERSION 545
 
 // ***************************************************************************************
 

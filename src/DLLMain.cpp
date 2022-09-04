@@ -8,11 +8,6 @@
 
 #include "Version.h"
 
-#pragma comment(lib, "../SDK/Lib/bedrock_server_api.lib")
-#pragma comment(lib, "../SDK/Lib/bedrock_server_var.lib")
-#pragma comment(lib, "../SDK/Lib/SymDBHelper.lib")
-#pragma comment(lib, "../SDK/Lib/LiteLoader.lib")
-
 void PluginInit();
 
 void CheckProtocolVersion()
@@ -27,7 +22,7 @@ void CheckProtocolVersion()
     {
         logger.warn("Protocol version mismatched! Target version: {}. Current version: {}.",
                     TARGET_BDS_PROTOCOL_VERSION, currentProtocol);
-        logger.warn("This will most likely crash the server. Please use the plugin that matches the BDS version!");
+        logger.warn("This may result in crash. Please switch to the version matching the BDS version!");
     }
 
 #endif // TARGET_BDS_PROTOCOL_VERSION
