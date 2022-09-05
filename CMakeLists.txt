@@ -65,10 +65,10 @@ add_link_options(
 add_library(Plugin SHARED ${SRC_FILES_DIR})
 
 target_link_libraries(Plugin 
-	${CMAKE_SOURCE_DIR}/SDK/Lib/LiteLoader.lib
-	${CMAKE_SOURCE_DIR}/SDK/Lib/bedrock_server_api.lib
-	${CMAKE_SOURCE_DIR}/SDK/Lib/bedrock_server_var.lib
-	${CMAKE_SOURCE_DIR}/SDK/Lib/SymDBHelper.lib
+	"${CMAKE_SOURCE_DIR}/SDK/Lib/LiteLoader.lib"
+	"${CMAKE_SOURCE_DIR}/SDK/Lib/bedrock_server_api.lib"
+	"${CMAKE_SOURCE_DIR}/SDK/Lib/bedrock_server_var.lib"
+	"${CMAKE_SOURCE_DIR}/SDK/Lib/SymDBHelper.lib"
 )
 
 add_custom_command(TARGET Plugin PRE_BUILD
