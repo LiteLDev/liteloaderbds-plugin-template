@@ -18,6 +18,8 @@
 static_assert(false, "Please modify your plugin information below and delete this line!");
 
 // The basic descriptions of your plugin
+// Note that the the plugin name CAN ONLY CONTAIN Enlish alphabet, digit, dash(-) and
+// underscore(_). 
 #define PLUGIN_NAME "My Plugin"
 #define PLUGIN_INTRODUCTION "My Plugin is a plugin printing \"Hello, World!\" in the console."
 #define PLUGIN_AUTHOR "Me"
