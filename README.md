@@ -39,3 +39,15 @@ The template repository for LiteLoaderBDS C++ plugin development.
     * **Plugin.pdb** is the program database for debugging. Put it into the **plugin** directory of LiteLoaderBDS, and the time your plugin crashes accidentally, you can get a readable crash report in the **log** directory.
 
 2. Run LiteLoaderBDS.
+
+### Edit README.md and LICENSE
+
+You ought not to keep the original README.md, for it contains instructions on how to build your own plugin, which might not fit your plugin repository.
+The README.md of your repository should contain instructions on how to build, install and use your plugin.
+
+You don't necessarily want your repository to be open sourced under the Unlicense, so please choose your own license in place of the `LICENSE` file.
+
+## License
+
+This repository is open source under the Unlicense.
+Please refer to [the license file](LICENSE) for further information.
