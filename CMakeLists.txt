@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.21)
 
-project(Plugin)
+project(plugin)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_BUILD_TYPE Release)
@@ -62,15 +62,15 @@ add_link_options(
     /SUBSYSTEM:CONSOLE
 )
 
-add_library(Plugin SHARED ${SRC_FILES_DIR})
+add_library(plugin SHARED ${SRC_FILES_DIR})
 
-target_link_libraries(Plugin 
+target_link_libraries(plugin 
 	"${CMAKE_SOURCE_DIR}/SDK/Lib/LiteLoader.lib"
 	"${CMAKE_SOURCE_DIR}/SDK/Lib/bedrock_server_api.lib"
 	"${CMAKE_SOURCE_DIR}/SDK/Lib/bedrock_server_var.lib"
 	"${CMAKE_SOURCE_DIR}/SDK/Lib/SymDBHelper.lib"
 )
 
-add_custom_command(TARGET Plugin PRE_BUILD
-    COMMAND cmd /c ${PROJECT_SOURCE_DIR}/PrepareLibraries.cmd ${PROJECT_SOURCE_DIR}
+add_custom_command(TARGET plugin PRE_BUILD
+    COMMAND cmd /c ${PROJECT_SOURCE_DIR}/prepare_libraries.cmd ${PROJECT_SOURCE_DIR}
 )

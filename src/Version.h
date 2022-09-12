@@ -1,5 +1,5 @@
 /**
- * @file Version.h
+ * @file version.h
  * @note DO NOT remove this file unless you know what you are doing!
  *       DO NOT modify code outside the designated area!
  */
