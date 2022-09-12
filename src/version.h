@@ -28,8 +28,8 @@ static_assert(false, "Please modify your plugin information below and delete thi
 
 // The version of your plugin. If you do not know how to set it, please refer
 // to https://semver.org/ .
-#define PLUGIN_VERSION_MAJOR 1
-#define PLUGIN_VERSION_MINOR 0
+#define PLUGIN_VERSION_MAJOR 0
+#define PLUGIN_VERSION_MINOR 1
 #define PLUGIN_VERSION_REVISION 0
 #define PLUGIN_VERSION_BUILD 0
 
