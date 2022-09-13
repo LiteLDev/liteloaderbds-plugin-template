@@ -10,12 +10,12 @@
 
 void PluginInit();
 
+Logger logger(PLUGIN_NAME);
+
 void CheckProtocolVersion()
 {
 
 #ifdef TARGET_BDS_PROTOCOL_VERSION
-
-    Logger logger(PLUGIN_NAME);
 
     auto current_protocol = LL::getServerProtocolVersion();
     if (TARGET_BDS_PROTOCOL_VERSION != current_protocol)
