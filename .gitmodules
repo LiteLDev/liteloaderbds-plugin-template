@@ -1,4 +1,4 @@
 [submodule "SDK"]
-	path = SDK
+	path = sdk
 	url = https://github.com/LiteLDev/LiteLoaderSDK
 	branch = main
