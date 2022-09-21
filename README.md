@@ -14,6 +14,15 @@ The template repository for LiteLoaderBDS C++ plugin development.
 
   You don't necessarily want your repository to be open sourced under the Unlicense, so please choose your own license in place of the `LICENSE` file.
 
+## For Beta Developers
+
+If you would like to experience the latest features for plugins in beta versions of LiteLoaderBDS, you can switch the branch of the SDK to beta. Run the commands below under the plugin repository:
+
+```sh
+git submodule set-branch --branch beta SDK
+git submodule update --init --remote
+```
+
 ## License
 
 This repository is open source under the Unlicense.
