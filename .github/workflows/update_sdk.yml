@@ -6,10 +6,11 @@ on:
   workflow_dispatch:
 
 jobs:
-  update_sdk:
+  main:
+    name: Update SDK of the main branch
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout the main branch
         uses: actions/checkout@v3
 
       - name: Update submodules
@@ -17,5 +18,22 @@ jobs:
           git submodule update --init --remote
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git commit -am "Update SDK" || exit 0
+          git push || exit 0
+          
+  beta:
+    name: Update SDK of the beta branch
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the beta branch
+        uses: actions/checkout@v3
+        with:
+          ref: beta
+          
+      - name: Update submodules
+        run: |
+          git submodule update --init --remote
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-action[bot]@users.noreply.github.com"
           git commit -am "Update SDK" || exit 0
           git push || exit 0
