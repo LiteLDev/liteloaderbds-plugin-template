@@ -12,11 +12,11 @@ file(GLOB_RECURSE SRC_FILES_DIR
 )
 
 include_directories(
-    ${CMAKE_SOURCE_DIR}/SDK/Header
+    ${CMAKE_SOURCE_DIR}/SDK/include
 )
 
 link_directories(
-    ${CMAKE_SOURCE_DIR}/SDK/Lib
+    ${CMAKE_SOURCE_DIR}/SDK/lib
 )
 
 add_definitions(
@@ -65,10 +65,10 @@ add_link_options(
 add_library(plugin SHARED ${SRC_FILES_DIR})
 
 target_link_libraries(plugin 
-	"${CMAKE_SOURCE_DIR}/SDK/Lib/LiteLoader.lib"
-	"${CMAKE_SOURCE_DIR}/SDK/Lib/bedrock_server_api.lib"
-	"${CMAKE_SOURCE_DIR}/SDK/Lib/bedrock_server_var.lib"
-	"${CMAKE_SOURCE_DIR}/SDK/Lib/SymDBHelper.lib"
+	"${CMAKE_SOURCE_DIR}/SDK/lib/LiteLoader.lib"
+	"${CMAKE_SOURCE_DIR}/SDK/lib/bedrock_server_api.lib"
+	"${CMAKE_SOURCE_DIR}/SDK/lib/bedrock_server_var.lib"
+	"${CMAKE_SOURCE_DIR}/SDK/lib/SymDBHelper.lib"
 )
 
 add_custom_command(TARGET plugin PRE_BUILD

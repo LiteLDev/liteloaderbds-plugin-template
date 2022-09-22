@@ -3,7 +3,7 @@
  * @brief The main file of the plugin
  */
 
-#include <LoggerAPI.h>
+#include <llapi/LoggerAPI.h>
 
 #include "version.h"
 

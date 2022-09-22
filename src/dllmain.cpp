@@ -3,8 +3,8 @@
  * @note DO NOT modify or remove this file!
  */
 
-#include <LoggerAPI.h>
-#include <ServerAPI.h>
+#include <llapi/LoggerAPI.h>
+#include <llapi/ServerAPI.h>
 
 #include "version.h"
 
