@@ -17,7 +17,7 @@ void CheckProtocolVersion()
 
 #ifdef TARGET_BDS_PROTOCOL_VERSION
 
-    auto current_protocol = LL::getServerProtocolVersion();
+    auto current_protocol = ll::getServerProtocolVersion();
     if (TARGET_BDS_PROTOCOL_VERSION != current_protocol)
     {
         logger.warn("Protocol version mismatched! Target version: {}. Current version: {}.",
@@ -35,10 +35,10 @@ BOOL APIENTRY DllMain(HMODULE hModule,
     switch (ul_reason_for_call)
     {
     case DLL_PROCESS_ATTACH:
-        LL::registerPlugin(
+        ll::registerPlugin(
             PLUGIN_NAME,
             PLUGIN_INTRODUCTION,
-            LL::Version(PLUGIN_VERSION_MAJOR, PLUGIN_VERSION_MINOR, PLUGIN_VERSION_REVISION, PLUGIN_LLVERSION_STATUS),
+            ll::Version(PLUGIN_VERSION_MAJOR, PLUGIN_VERSION_MINOR, PLUGIN_VERSION_REVISION, PLUGIN_LLVERSION_STATUS),
             std::map<std::string, std::string>{
                 {"Author", PLUGIN_AUTHOR},
             });
