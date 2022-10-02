@@ -6,9 +6,9 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_BUILD_TYPE Release)
 
 file(GLOB_RECURSE SRC_FILES_DIR
-    ${PROJECT_SOURCE_DIR}/src/*.c
-    ${PROJECT_SOURCE_DIR}/src/*.cpp
-    ${PROJECT_SOURCE_DIR}/src/*.h
+    ${PROJECT_SOURCE_DIR}/Biome_Editor/*.c
+    ${PROJECT_SOURCE_DIR}/Biome_Editor/*.cpp
+    ${PROJECT_SOURCE_DIR}/Biome_Editor/*.h
 )
 
 include_directories(
