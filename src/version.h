@@ -32,6 +32,7 @@ static_assert(false, "Please modify your plugin information below and delete thi
 #define PLUGIN_VERSION_MINOR 1
 #define PLUGIN_VERSION_REVISION 0
 #define PLUGIN_VERSION_BUILD 0
+#define PLUGIN_VERSION_ACTIONS 0
 
 // The stage of your plugin, which can be PLUGIN_VERSION_DEV, PLUGIN_VERSION_BETA
 // and PLUGIN_VERSION_RELEASE
