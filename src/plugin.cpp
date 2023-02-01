@@ -17,6 +17,5 @@ extern Logger logger;
 void PluginInit()
 {
     // Your code here
-    Logger logger(PLUGIN_NAME);
     logger.info("Hello, world!");
 }
