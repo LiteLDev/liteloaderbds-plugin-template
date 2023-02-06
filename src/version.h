@@ -10,9 +10,12 @@
 #define PLUGIN_VERSION_BETA 1
 #define PLUGIN_VERSION_RELEASE 2
 
+
+// ***************************************************************************************
+// ***************************************************************************************
 // ***************************************************************************************
 
-// Please FILL UP the content here before developing your plugin, and DO NOT modify any code
+// Please FILL UP the content in this area before developing your plugin, and DO NOT modify any code
 // outside this area.
 
 static_assert(false, "Please modify your plugin information below and delete this line!");
@@ -45,6 +48,9 @@ static_assert(false, "Please modify your plugin information below and delete thi
 #define TARGET_BDS_PROTOCOL_VERSION 560
 
 // ***************************************************************************************
+// ***************************************************************************************
+// ***************************************************************************************
+
 
 // File version information, which is used in Resource.rc
 #define __TO_VERSION_STRING(ver) #ver
