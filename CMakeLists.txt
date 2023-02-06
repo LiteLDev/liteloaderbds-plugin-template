@@ -62,15 +62,15 @@ add_link_options(
     /SUBSYSTEM:CONSOLE
 )
 
-add_library(plugin SHARED ${SRC_FILES_DIR})
+add_library(${CMAKE_PROJECT_NAME} SHARED ${SRC_FILES_DIR})
 
-target_link_libraries(plugin 
+target_link_libraries(${CMAKE_PROJECT_NAME} 
 	"${CMAKE_SOURCE_DIR}/SDK/lib/LiteLoader.lib"
 	"${CMAKE_SOURCE_DIR}/SDK/lib/bedrock_server_api.lib"
 	"${CMAKE_SOURCE_DIR}/SDK/lib/bedrock_server_var.lib"
 	"${CMAKE_SOURCE_DIR}/SDK/lib/SymDBHelper.lib"
 )
 
-add_custom_command(TARGET plugin PRE_BUILD
+add_custom_command(TARGET ${CMAKE_PROJECT_NAME} PRE_BUILD
     COMMAND cmd /c ${PROJECT_SOURCE_DIR}/prepare_libraries.cmd ${PROJECT_SOURCE_DIR}
 )
