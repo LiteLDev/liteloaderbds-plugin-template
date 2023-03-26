@@ -17,6 +17,9 @@ echo [INFO] Updating SDK...
 
 git submodule update --init --remote
 
-echo [INFO] SDK updated.
+rem Delete out-of-date BDS libs
+del /f SDK\Lib\bedrock_server_api.lib 2>nul
+del /f SDK\Lib\bedrock_server_var.lib 2>nul
 
+echo [INFO] SDK updated.
 pause
