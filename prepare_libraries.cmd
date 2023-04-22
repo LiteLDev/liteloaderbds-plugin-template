@@ -6,6 +6,6 @@ goto end
 
 :process
 cd /d %1\SDK\tools\
-LibraryBuilder.exe -o ..\lib\
+PeEditor.exe -c -l -o ../lib
 
 :end
